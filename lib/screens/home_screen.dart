@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:the_flutter_demo/components/custom_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,19 +7,49 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.blueAccent,
         ),
         body: Column(
-          children: [
-            const Expanded(child: CustomContainer(color: Colors.red)),
-            Expanded(
-                child: Column(
-              children: const [
-                Expanded(child: CustomContainer(color: Colors.black)),
-                Expanded(child: CustomContainer(color: Colors.blue)),
-              ],
-            ))
+          children:   [
+            staticComponent(),
+          scrollViewComponent()
+          
           ],
         ));
+  }
+
+  Widget staticComponent(){
+    return  Expanded(
+            child: Container(
+              color: Colors.red,
+              height: 100,
+            ),
+          );
+  }
+  Widget scrollViewComponent(){
+    return Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    color: Colors.black,
+                    height: 100,
+                  ),
+                  Container(
+                    color: Colors.red,
+                    height: 100,
+                  ),
+                  Container(
+                    color: Colors.black,
+                    height: 100,
+                  ),
+                  Container(
+                    color: Colors.pink,
+                    height: 100,
+                  ),
+                ],
+              ),
+            ),
+          );
   }
 }
