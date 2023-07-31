@@ -5,51 +5,36 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blueAccent,
+    return  Scaffold(
+     appBar: AppBar(),
+     body:Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+       children: [
+        Align(
+          alignment: Alignment.centerRight,
+          child: Container(
+                color: Colors.red,
+                height: 100,
+                width: 100,
+              ),
         ),
-        body: Column(
+         Row(
+          mainAxisAlignment: MainAxisAlignment.end,
           children:   [
-            staticComponent(),
-          scrollViewComponent()
-          
-          ],
-        ));
-  }
-
-  Widget staticComponent(){
-    return  Expanded(
-            child: Container(
+            Container(
               color: Colors.red,
               height: 100,
+              width: 100,
             ),
-          );
-  }
-  Widget scrollViewComponent(){
-    return Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    color: Colors.black,
-                    height: 100,
-                  ),
-                  Container(
-                    color: Colors.red,
-                    height: 100,
-                  ),
-                  Container(
-                    color: Colors.black,
-                    height: 100,
-                  ),
-                  Container(
-                    color: Colors.pink,
-                    height: 100,
-                  ),
-                ],
-              ),
+            Container(
+              color: Colors.red,
+              height: 100,
+              width: 100,
             ),
-          );
+          ],
+         ),
+       ],
+     ),
+    );
   }
 }
