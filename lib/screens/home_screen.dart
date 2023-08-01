@@ -1,40 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:the_flutter_demo/components/custom_button.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int count = 0;
+
+  @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-     appBar: AppBar(),
-     body:Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-       children: [
-        Align(
-          alignment: Alignment.centerRight,
-          child: Container(
-                color: Colors.red,
-                height: 100,
-                width: 100,
+    return Scaffold(
+      appBar: AppBar(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CustomButton(
+                value: "+",
+                onPressed: () {
+                  count++;
+                  setState(() {
+                    
+                  });
+                },
               ),
-        ),
-         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children:   [
-            Container(
-              color: Colors.red,
-              height: 100,
-              width: 100,
-            ),
-            Container(
-              color: Colors.red,
-              height: 100,
-              width: 100,
-            ),
-          ],
-         ),
-       ],
-     ),
+              Text(count.toString()),
+              CustomButton(
+                value: "-",
+                onPressed: () {
+                  count--;
+                  setState(() {
+                    
+                  });
+                },
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
