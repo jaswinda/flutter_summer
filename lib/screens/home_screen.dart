@@ -9,38 +9,41 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int count = 0;
-
+  int counter = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+       mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              CustomButton(
-                value: "+",
-                onPressed: () {
-                  count++;
-                  setState(() {
-                    
-                  });
-                },
-              ),
-              Text(count.toString()),
-              CustomButton(
-                value: "-",
-                onPressed: () {
-                  count--;
-                  setState(() {
-                    
-                  });
-                },
-              ),
-            ],
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                CustomButton(
+                  title: "-",
+                  onTap: () {
+                   counter--;
+                   setState(() {
+                     
+                   });
+                   print(counter);
+                  },
+                ),
+                 Text(counter .toString()),
+                CustomButton(
+                  title: "+",
+                  onTap: () {
+                    counter++;
+                    setState(() {
+                      
+                    });
+                      print(counter);
+                  },
+                ),
+              ],
+            ),
           ),
         ],
       ),
