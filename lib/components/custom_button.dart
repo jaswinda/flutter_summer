@@ -6,7 +6,7 @@ class CustomButton extends StatelessWidget {
   final Function onTap;
   const CustomButton({
     super.key,
-    this.color = Colors.amber, required this.title, required this.onTap,
+    this.color = Colors.black, required this.title, required this.onTap,
   });
 
   @override
@@ -24,7 +24,7 @@ class CustomButton extends StatelessWidget {
       ),
       child:  Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text(title),
+        child: Text(title, style: const TextStyle(fontSize: 14, color: Colors.amber)),
       ),
       ),
     );

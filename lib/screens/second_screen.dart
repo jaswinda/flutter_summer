@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:the_flutter_demo/components/custom_button.dart';
-import 'package:the_flutter_demo/screens/second_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class SecondScreen extends StatefulWidget {
+  final int counter;
+  final Function increment;
+  final Function decrement;
+  const SecondScreen({super.key, required this.counter, required this.increment, required this.decrement});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<SecondScreen> createState() => _SecondScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _SecondScreenState extends State<SecondScreen> {
   int counter = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    counter= widget.counter;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,11 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
            Padding(
              padding: const EdgeInsets.all(8.0),
-             child: CustomButton(title: "Go to Next Screen", onTap: (){
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=> SecondScreen(counter: counter,
-                increment: increment, 
-                decrement: decrement,
-                )));
+             child: CustomButton(title: "Back", onTap: (){
+                Navigator.pop(context);
              }),
            ),
         ],
@@ -43,9 +49,11 @@ class _HomeScreenState extends State<HomeScreen> {
   void decrement() {
     counter--;
     setState(() {});
+    widget.decrement();
   }
   void increment() {
     counter++;
     setState(() {});
+    widget.increment();
   }
 }
