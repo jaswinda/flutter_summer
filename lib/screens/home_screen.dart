@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:the_flutter_demo/components/custom_button.dart';
-import 'package:the_flutter_demo/screens/second_screen.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,37 +14,37 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              CustomButton(title: "-", onTap: ()=>decrement()),
-               Text(counter.toString()),
-              CustomButton(title: "+", onTap: ()=>increment()),
-            ],
-          ),
-           Padding(
-             padding: const EdgeInsets.all(8.0),
-             child: CustomButton(title: "Go to Next Screen", onTap: (){
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=> SecondScreen(counter: counter,
-                increment: increment, 
-                decrement: decrement,
-                )));
-             }),
-           ),
-        ],
+      body: SingleChildScrollView(
+        child: Wrap(
+          children: [
+            for (int i = 0; i < 100; i++)
+              SizedBox(
+                height: 200,
+                width: Get.width / 2,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.black,
+                      border: Border.all(
+                        color: Colors.grey,
+                        width: 2,
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Image.network("https://blog.mytripary.com/wp-content/uploads/2022/05/Pokhara-valley-nepal.jpg"),
+                        const Text("ICP", style: TextStyle(fontSize: 30, color: Colors.amber)),
+                        const Text("Loream impsum", style: TextStyle(fontSize: 20, color: Colors.white)),
+                      ],
+                    )
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
-  }
-
-  void decrement() {
-    counter--;
-    setState(() {});
-  }
-  void increment() {
-    counter++;
-    setState(() {});
   }
 }
