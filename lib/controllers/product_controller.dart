@@ -2,10 +2,11 @@ import 'package:get/get.dart';
 import 'package:the_flutter_demo/models/product.dart';
 
 class ProductController extends GetxController {
+  var cart = {}.obs;
   var products = <Product>[
     Product(
         id: 1,
-        name:null,
+        name: "Product A",
         image: "https://risingnepaldaily.com/storage/media/8765/10.jpg"),
     Product(
         id: 2,
@@ -67,4 +68,12 @@ class ProductController extends GetxController {
         image:
             "https://cdn.britannica.com/68/178668-050-DA998E6C/Durbar-Square-heart-district-Kathmandu-earthquake-Nepal-April-25-2015.jpg"),
   ].obs;
+
+  addToCart(Product product) {
+    if (cart.containsKey(product.id)) {
+      cart[product.id].quantity = cart[product.id].quantity! + 1;
+    } else {
+      cart[product.id] = product;
+    }
+  }
 }
