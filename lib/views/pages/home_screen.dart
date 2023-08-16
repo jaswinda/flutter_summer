@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
               Obx(() => Text(productController.cart.length.toString())),
               IconButton(
                 onPressed: () {
-                  Get.to(()=> CartScreen());
+                  Get.to(() => CartScreen());
                 },
                 icon: const Icon(Icons.shopping_cart),
               ),
@@ -29,16 +29,15 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Wrap(
+        child: Obx(() => Wrap(
             children: productController.products
                 .map((product) => ProductTileComponent(
-                      name: product.name ?? 'Product Name',
-                      image: product.image!,
+                     product: product,
                       onAdd: () {
                         productController.addToCart(product);
                       },
                     ))
-                .toList()),
+                .toList())),
       ),
     );
   }

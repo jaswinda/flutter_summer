@@ -14,7 +14,7 @@ class CartScreen extends StatelessWidget {
         ),
         body: Column(
             children: productController.cart.values
-                .map((product) => Padding(
+                .map(( product) => Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                       width: Get.width,
@@ -26,12 +26,12 @@ class CartScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                         Image.network(
-                          product.image!,
+                          product["image"],
                           width: 100,
                           height: 100,
                         ),
-                        Text(product.name!),
-                        Text(product.quantity.toString()),
+                        Text(product["name"]),
+                        Text(product["quantity"].toString()),
                       ])),
                 ))
                 .toList()));

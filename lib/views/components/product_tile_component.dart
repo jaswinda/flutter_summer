@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:the_flutter_demo/models/product.dart';
 
 class ProductTileComponent extends StatelessWidget {
-  final String name;
-  final String image;
+  final Product product;
   final Function onAdd;
-  const ProductTileComponent({super.key,  this.name="Product Nmae",  this.image="https://risingnepaldaily.com/storage/media/8765/10.jpg", required this.onAdd});
+  const ProductTileComponent({super.key, required this.product, required this.onAdd});
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +24,18 @@ class ProductTileComponent extends StatelessWidget {
                     ),
                     child: Column(
                       children:  [
-                        Expanded(child: Image.network(image,
+                        Expanded(child: Image.network(product.image,
                           fit: BoxFit.cover,
                         )),
-                         Text(name
+                         Text(product.name.toUpperCase(), style: const TextStyle(color: Colors.blue, fontSize: 15),
+                         ),
+                         Text(product.retailSellingPrice.toString(), style: const TextStyle(color: Colors.red),
                          ),
                       ],
                     ),
                   ),
                    Positioned(
-                    bottom: 15,
+                    top: 5,
                     right: 10,
                     child: GestureDetector(
                       onTap: ()=>onAdd(),

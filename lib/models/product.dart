@@ -13,6 +13,7 @@ class Product {
     String name;
     dynamic code;
     String image;
+    int ?quantity;
     BuyingUnit latestBuyingUnit;
     BuyingUnit buyingUnit;
     SellingUnit sellingUnit;
@@ -42,6 +43,7 @@ class Product {
         required this.buyingUnit,
         required this.sellingUnit,
         required this.description,
+        this.quantity=1,
         required this.secondaryName,
         required this.costPrice,
         required this.wholesaleSellingPrice,
@@ -65,6 +67,7 @@ class Product {
         id: json["id"],
         name: json["name"],
         code: json["code"],
+        quantity: json["quantity"],
         latestBuyingUnit: buyingUnitValues.map[json["latest_buying_unit"]]!,
         buyingUnit: buyingUnitValues.map[json["buying_unit"]]!,
         sellingUnit: sellingUnitValues.map[json["selling_unit"]]!,
@@ -92,12 +95,14 @@ class Product {
         "id": id,
         "name": name,
         "code": code,
+        "quantity":quantity,
         "latest_buying_unit": buyingUnitValues.reverse[latestBuyingUnit],
         "buying_unit": buyingUnitValues.reverse[buyingUnit],
         "selling_unit": sellingUnitValues.reverse[sellingUnit],
         "description": description,
         "secondary_name": secondaryName,
         "cost_price": costPrice,
+        "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/d6/96/36/photo4jpg.jpg?w=700&h=-1&s=1",
         "wholesale_selling_price": wholesaleSellingPrice,
         "retail_selling_price": retailSellingPrice,
         "buying_to_selling_unit_equivalence": buyingToSellingUnitEquivalence,
