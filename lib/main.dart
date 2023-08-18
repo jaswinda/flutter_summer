@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:the_flutter_demo/views/pages/home_screen.dart';
+import 'package:khalti/khalti.dart';
+import 'package:the_flutter_demo/views/pages/splash_screen.dart';
 
-void main() {
-  runApp(   GetMaterialApp(
-    home:HomeScreen()
-  ));
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Khalti.init(
+    publicKey: '',
+    enabledDebugging: false,
+  );
+
+  runApp(const GetMaterialApp(home: SplashScreen()));
 }
